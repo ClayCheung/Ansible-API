@@ -1,0 +1,4 @@
+[test-group]
+# 账号/密码 登录
+# 登录自己
+172.31.27.196:22 ansible_ssh_user=root ansible_ssh_pass=1qaz@WSX
