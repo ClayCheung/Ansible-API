@@ -29,6 +29,7 @@ class AdHoc(object):
         self.module = module
         self.args = args
         self.options = None
+        self.callback = None
 
 
     def check_cfg_and_inventory_exist(self, ansible_cfg_filePath, inventory_filePath):
@@ -133,32 +134,47 @@ class AdHoc(object):
 
         # 实例化TaskQueueManager，执行ad-hoc任务
         ## 重写 callback
-        callback = AdhocCallBack()
+        self.callback = AdhocCallBack()
 
         tqm = TaskQueueManager(inventory=inventory,
                                variable_manager=variableManager,
                                loader=loader,
                                options=self.options,
                                passwords=dict(),
-                               stdout_callback=callback)
+                               stdout_callback=self.callback)
         tqm.run(play=play)
 
+        # 返回True 表示ansible任务已经执行，可用于判断
+        return True
+
+        # # 自定制 返回的dict格式
+        # result_dict = {'success': {}, 'failed': {}, 'unreachable': {}}
+        #
+        # for host, res in callback.host_ok.items():
+        #     result_dict['success'][host] = res
+        # for host, res in callback.host_failed.items():
+        #     result_dict['failed'][host] = res
+        # for host, res in callback.host_unreachable.items():
+        #     result_dict['unreachable'][host] = res
+        #
+        # return result_dict
+
+    def get_result(self):
         # 自定制 返回的dict格式
         result_dict = {'success': {}, 'failed': {}, 'unreachable': {}}
 
-        for host, res in callback.host_ok.items():
+        for host, res in self.callback.host_ok.items():
             result_dict['success'][host] = res
-        for host, res in callback.host_failed.items():
+        for host, res in self.callback.host_failed.items():
             result_dict['failed'][host] = res
-        for host, res in callback.host_unreachable.items():
+        for host, res in self.callback.host_unreachable.items():
             result_dict['unreachable'][host] = res
 
         return result_dict
 
 if __name__ == '__main__':
     adhoc = AdHoc(hosts='test-group', module='shell', args='touch /tmp/ad-hoc_testClass_haha')
-    result = adhoc.run()
-    print type(result)
-    print result
+    isExecute = adhoc.run()
+    print 'isExecute: '+str(isExecute)
     import json
-    print json.dumps(result)
+    print json.dumps(adhoc.get_result())
