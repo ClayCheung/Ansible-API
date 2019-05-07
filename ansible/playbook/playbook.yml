@@ -1,0 +1,11 @@
+---
+- hosts: test-group
+  remote_user: root
+  vars:
+    filename: playbook-test-11
+  tasks:
+    - name: create a file
+      file:
+        path: /tmp/{{filename}}
+        mode: 0644
+        state: touch
