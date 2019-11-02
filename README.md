@@ -1,38 +1,38 @@
-# Ansible-API
-> »ùÓÚansible Ä£¿éµÄ¶þ´Î¿ª·¢
+# Ansible-API for Humans
+> åŸºäºŽansible api çš„å°è£…ï¼Œæ‹†ç®±å³ç”¨
 
 > Ansible 2.4.1  
 > Python 2.7
 
-### AdHocÀà
-- init£º´«Èë hosts, module, argsµÈÏà¹Ø²ÎÊý
-- £¨¿ÉÑ¡£©Í¨¹ýsetOptions()·½·¨ÖØÐÂÉèÖÃ²ÎÊý
-- £¨¿ÉÑ¡£©Í¨¹ýÐÞ¸Äadhoc.baseInventoryFilePathµÄÖµ£¬ÖØÐÂÖ¸¶¨»ù±¾inventoryÎÄ¼þµÄÂ·¾¶
-- £¨¿ÉÑ¡£©Í¨¹ýset_dynamic_inventory(resource)£ºÌí¼Ó¶¯Ì¬inventory
-     > ×¢Òâ£ºÈôÏë¶¯Ì¬Ìí¼ÓµÄÖ÷»ú±»Ö´ÐÐÈÎÎñ£¬ÐèÒªÔÚÊµÀý»¯ÀàµÄÊ±ºòÖ¸¶¨hostsµÄÖµÎª¶¯Ì¬Ö÷»ú×éµÄÃû³Æ£¨»òÕßÍ¨¹ýadhoc.hostsÖØÖÃhosts£©
-- run·½·¨£º ¿ÉÒÔ´«Èë gather_facts µÈ²ÎÊý
-- get_result·½·¨£º·µ»Ø×Ô¶¨ÖÆµÄdict£¬±ãÓÚÐòÁÐ»¯³ÉJSONÊý¾Ý
-- ÔÚ·ûºÏRESTfulÐ­ÒéµÄÇ°ºó¶Ë·ÖÀëµÄÏµÍ³ÖÐ£¬µ÷ÓÃAdHocÀà£¬¼´¿ÉÈÝÒ×¶¨ÖÆÇëÇóJSONÊý¾ÝÓëÏìÓ¦µÄJSONÊý¾Ý
-- Ààµ÷ÓÃÍ¼
+### AdHocç±»
+- initï¼šä¼ å…¥ hosts, module, argsç­‰ç›¸å…³å‚æ•°
+- ï¼ˆå¯é€‰ï¼‰é€šè¿‡setOptions()æ–¹æ³•é‡æ–°è®¾ç½®å‚æ•°
+- ï¼ˆå¯é€‰ï¼‰é€šè¿‡ä¿®æ”¹adhoc.baseInventoryFilePathçš„å€¼ï¼Œé‡æ–°æŒ‡å®šåŸºæœ¬inventoryæ–‡ä»¶çš„è·¯å¾„
+- ï¼ˆå¯é€‰ï¼‰é€šè¿‡set_dynamic_inventory(resource)ï¼šæ·»åŠ åŠ¨æ€inventory
+     > æ³¨æ„ï¼šè‹¥æƒ³åŠ¨æ€æ·»åŠ çš„ä¸»æœºè¢«æ‰§è¡Œä»»åŠ¡ï¼Œéœ€è¦åœ¨å®žä¾‹åŒ–ç±»çš„æ—¶å€™æŒ‡å®šhostsçš„å€¼ä¸ºåŠ¨æ€ä¸»æœºç»„çš„åç§°ï¼ˆæˆ–è€…é€šè¿‡adhoc.hostsé‡ç½®hostsï¼‰
+- runæ–¹æ³•ï¼š å¯ä»¥ä¼ å…¥ gather_facts ç­‰å‚æ•°
+- get_resultæ–¹æ³•ï¼šè¿”å›žè‡ªå®šåˆ¶çš„dictï¼Œä¾¿äºŽåºåˆ—åŒ–æˆJSONæ•°æ®
+- åœ¨ç¬¦åˆRESTfulåè®®çš„å‰åŽç«¯åˆ†ç¦»çš„ç³»ç»Ÿä¸­ï¼Œè°ƒç”¨AdHocç±»ï¼Œå³å¯å®¹æ˜“å®šåˆ¶è¯·æ±‚JSONæ•°æ®ä¸Žå“åº”çš„JSONæ•°æ®
+- ç±»è°ƒç”¨å›¾
 ![uml_1](docs/img/uml_1.png)
-### PlayBookÀà
-- init: ´«Èë playbook_pathµÈÏà¹Ø²ÎÊý
-- £¨¿ÉÑ¡£©Í¨¹ýsetOptions()·½·¨ÖØÐÂÉèÖÃ²ÎÊý
+### PlayBookç±»
+- init: ä¼ å…¥ playbook_pathç­‰ç›¸å…³å‚æ•°
+- ï¼ˆå¯é€‰ï¼‰é€šè¿‡setOptions()æ–¹æ³•é‡æ–°è®¾ç½®å‚æ•°
     > playbook.setOptions(forks=10)
-- £¨¿ÉÑ¡£©Í¨¹ýbaseInventoryFilePathÉèÖÃinventoryÂ·¾¢
+- ï¼ˆå¯é€‰ï¼‰é€šè¿‡baseInventoryFilePathè®¾ç½®inventoryè·¯åŠ²
     > playbook.baseInventoryFilePath = 'path/of/base/playbook.yml'
-- £¨¿ÉÑ¡£©Í¨¹ýset_dynamic_inventory(resource)£ºÌí¼Ó¶¯Ì¬inventory£¬
-    > ×¢Òâ£ºÈôÏë¶¯Ì¬Ìí¼ÓµÄÖ÷»ú±»Ö´ÐÐplaybook,ÒªÔÚÖ´ÐÐµÄplaybook.ymlÎÄ¼þÖÐÖ¸¶¨hosts°üº¬¶¯Ì¬Ìí¼ÓµÄ×é£¨Ä¬ÈÏ×éÃû£ºdefault_group£©
-- ¶¯Ì¬Ö÷»úÇåµ¥µÄ´«²Î£¨resource£©¸ñÊ½£º
+- ï¼ˆå¯é€‰ï¼‰é€šè¿‡set_dynamic_inventory(resource)ï¼šæ·»åŠ åŠ¨æ€inventoryï¼Œ
+    > æ³¨æ„ï¼šè‹¥æƒ³åŠ¨æ€æ·»åŠ çš„ä¸»æœºè¢«æ‰§è¡Œplaybook,è¦åœ¨æ‰§è¡Œçš„playbook.ymlæ–‡ä»¶ä¸­æŒ‡å®šhostsåŒ…å«åŠ¨æ€æ·»åŠ çš„ç»„ï¼ˆé»˜è®¤ç»„åï¼šdefault_groupï¼‰
+- åŠ¨æ€ä¸»æœºæ¸…å•çš„ä¼ å‚ï¼ˆresourceï¼‰æ ¼å¼ï¼š
     ```
-    ## resourceµÄ¸ñÊ½£º
-        ### 1. ¿ÉÒÔÊÇÒ»¸öÖ»°üº¬Ö÷»úÁ¬½ÓÐÅÏ¢µÄlist,ÔªËØÊÇdict,Ã¿¸ödict°üº¬Ò»Ì¨Ö÷»úµÄÐÅÏ¢
+    ## resourceçš„æ ¼å¼ï¼š
+        ### 1. å¯ä»¥æ˜¯ä¸€ä¸ªåªåŒ…å«ä¸»æœºè¿žæŽ¥ä¿¡æ¯çš„list,å…ƒç´ æ˜¯dict,æ¯ä¸ªdictåŒ…å«ä¸€å°ä¸»æœºçš„ä¿¡æ¯
         # resource =[
         #             {"hostname":"Nginx01","ip": "192.168.1.100", "port": "22", "username": "root", "password":"123456"},
         #             {"hostname":"Nginx02","ip": "192.168.1.101", "port": "22", "username": "root", "password":"123456"},
         #           ]
         #
-        ### 2. ¿ÉÒÔÊÇÒ»¸öÖ»°üº¬Ö÷»ú×é¡¢Ö÷»úÁ¬½ÓÐÅÏ¢¡¢±äÁ¿ÐÅÏ¢µÄdict
+        ### 2. å¯ä»¥æ˜¯ä¸€ä¸ªåªåŒ…å«ä¸»æœºç»„ã€ä¸»æœºè¿žæŽ¥ä¿¡æ¯ã€å˜é‡ä¿¡æ¯çš„dict
         resource = {
             "dynamic-group01": {
                 "hosts": [
@@ -41,14 +41,14 @@
                 ],
                 "vars": {
                     "var1": "dynamic_inventory",
-                    "var2": "resourceµÄ¸ñÊ½£ºkey²»ÄÜ±ä£¬¿ÉÒÔÎª¿Õ"
+                    "var2": "resourceçš„æ ¼å¼ï¼škeyä¸èƒ½å˜ï¼Œå¯ä»¥ä¸ºç©º"
                 }
             }
         }
     ```
-- run·½·¨£ºÖ´ÐÐplaybook 
-    > ×¢Òâ£ºplaybookµÄÖ´ÐÐhosts·¶Î§£¬ÔÚplaybook.ymlÎÄ¼þÖÐÉè¶¨£¬¿ÉÒÔ¶¯Ì¬Ö¸¶¨playbookÎÄ¼þ
-- get_result·½·¨£º·µ»Ø×Ô¶¨ÖÆµÄdict£¬±ãÓÚÐòÁÐ»¯³ÉJSONÊý¾Ý
-- ÔÚ·ûºÏRESTfulÐ­ÒéµÄÇ°ºó¶Ë·ÖÀëµÄÏµÍ³ÖÐ£¬µ÷ÓÃPlaybookÀà£¬¼´¿ÉÈÝÒ×¶¨ÖÆÇëÇóJSONÊý¾ÝÓëÏìÓ¦µÄJSONÊý¾Ý
-- - Ààµ÷ÓÃÍ¼
+- runæ–¹æ³•ï¼šæ‰§è¡Œplaybook 
+    > æ³¨æ„ï¼šplaybookçš„æ‰§è¡ŒhostsèŒƒå›´ï¼Œåœ¨playbook.ymlæ–‡ä»¶ä¸­è®¾å®šï¼Œå¯ä»¥åŠ¨æ€æŒ‡å®šplaybookæ–‡ä»¶
+- get_resultæ–¹æ³•ï¼šè¿”å›žè‡ªå®šåˆ¶çš„dictï¼Œä¾¿äºŽåºåˆ—åŒ–æˆJSONæ•°æ®
+- åœ¨ç¬¦åˆRESTfulåè®®çš„å‰åŽç«¯åˆ†ç¦»çš„ç³»ç»Ÿä¸­ï¼Œè°ƒç”¨Playbookç±»ï¼Œå³å¯å®¹æ˜“å®šåˆ¶è¯·æ±‚JSONæ•°æ®ä¸Žå“åº”çš„JSONæ•°æ®
+- - ç±»è°ƒç”¨å›¾
 ![uml_2](docs/img/uml_2.png)
